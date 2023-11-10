@@ -2,7 +2,7 @@ namespace EntidadeSpace
 {
     class Usuarios
     {
-        int Id;
-        string NombreDeUsuario;
+        public int Id { get; set; }
+        public string NombreDeUsuario{ get; set; }
     }
 }

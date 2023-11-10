@@ -1,7 +1,10 @@
 namespace EntidadeSpace
 {
-    int Id;
-    int IdUsuarioPropietario;
-    string Nombre;
-    string Descripcion;   
+    class Tablero
+    {
+        int id ;
+        int idUsuarioPropietario;
+        string nombre;
+        string descripcion;   
+    }
 }
