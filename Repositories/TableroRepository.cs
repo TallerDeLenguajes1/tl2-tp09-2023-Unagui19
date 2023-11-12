@@ -85,10 +85,6 @@ namespace Entidades.Repositorios
             return tableros;
         }
 
-
-
-
-
         public void Remove(int id)
         {
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);// crear variable de conexion

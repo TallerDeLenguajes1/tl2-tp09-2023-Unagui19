@@ -15,5 +15,7 @@ namespace Entidades.Repositorios
         public void Update(Tarea Tarea, int id);
         public List<Tarea> GetTareasPorTablero(int id);
         public void AsignarUsuarioATarea(int idUsuario, int idTarea);
+        public void UpdatePorNombre (int id, string nombre);
+        public void UpdatePorEstado (int id, EstadoTarea estado);
     }
 }
