@@ -50,9 +50,9 @@ public class UsuarioController : ControllerBase
 
 // ● PUT /api/tarea/{Id}/Nombre : Permite modificar un nombre de un Usuario.
     [HttpPut ("api/tarea/{id}/Nombre")]
-    public ActionResult<Boolean>CambiarCadetePedido(int id)
+    public ActionResult<Boolean>ModUsuario(int id,string nombre)
     {
-        RepoUsuario.Remove(id);
+        RepoUsuario.UpdateUsuarioPorNombre(id,nombre);
         return Ok("Usuario eliminado con exito");
     }
 

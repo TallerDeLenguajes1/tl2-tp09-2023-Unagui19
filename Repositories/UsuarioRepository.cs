@@ -91,6 +91,22 @@ namespace Entidades.Repositorios
             connection.Close();
         }
 
+        public void UpdateUsuarioPorNombre (int id, string nombre)//actualizar la Tarea
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
+            {//conectando
+            SQLiteCommand command = connection.CreateCommand();//creando comando
+            command.CommandText = @"
+            UPDATE Tarea 
+            SET nombre = @nombre  
+            WHERE id = @id;";//EN AMBOS LUGARES USAR EL NOMBRE QUE APARECE EN LA BASE DE DATOS
+            connection.Open();//abrir conexion
+            command.Parameters.Add(new SQLiteParameter("@nombre", nombre));
+            command.Parameters.Add(new SQLiteParameter("@id", id));
+            command.ExecuteNonQuery();// no me devuelve nada, solo modifica la bd
+            connection.Close();
+            }   
+        }
         // public List<Usuario> GetAll();
         // public Usuario GetById(int id);
         // public void Remove(int id);

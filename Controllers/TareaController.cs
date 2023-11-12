@@ -35,19 +35,7 @@ public class TareaController : ControllerBase
         return Ok(Tarea);
     }
 
-// // ● GET /api/Tarea/{Id}: Permite buscar un Tareas por id.
-//     [HttpGet ("api/Tarea/{id}", Name = "GetTareaId")]
-//     public ActionResult<Tarea>GetTareaPorId(int id)
-//     {
-//         Tarea Tarea = RepoTarea.GetById(id);
-//         if (Tarea!=null)
-//         {
-//             return Ok(Tarea);
-//         }
-//         else{
-//             return NotFound("No existe el Tarea buscado");
-//         }
-//     }
+
 
 // ● PUT /api/Tarea/{id}/Nombre/{Nombre}: Permite modificar una Tarea.
     [HttpPut ("/api/Tarea/{id}/Nombre/{Nombre}")]
@@ -65,6 +53,57 @@ public class TareaController : ControllerBase
         RepoTarea.UpdatePorEstado(id, estado);
         return Ok("Tarea modificada con exito");
     }
+
+// ● DELETE /api/Tarea/{id}: Elimina una tarea por su ID.
+    [HttpDelete ("api/tarea/{id}")]
+    public ActionResult<Boolean>Eliminar(int id)
+    {
+        RepoTarea.Remove(id);
+        return Ok("Tarea eliminada con exito");
+    }
+
+// ● GET /api/Tarea/{Estado}: Cantidad de tareas en un estado
+    [HttpGet ("api/Tarea/{Estado}", Name = "GetTareasPorEstado")]
+    public ActionResult<List<Tarea>>GetTareasPorEsTado(EstadoTarea Estado)
+    {
+       List<Tarea> tareas = RepoTarea.GetTareasPorEstado(Estado);
+        if (tareas!=null)
+        {
+            return Ok(tareas);
+        }
+        else{
+            return NotFound("No existe tarea alguna con el estado buscado");
+        }
+    }
+
+// ● GET /api/Tarea/Usuario/{Id}: Listar tareas asignada a un usuario
+[HttpGet ("/api/Tarea/Usuario/{Id}", Name = "GetTareasPorIdUsuarioAsignado")]
+    public ActionResult<List<Tarea>>GetTareasPorIdUsuAsignado(int Id)
+    {
+       List<Tarea> tareas = RepoTarea.GetTareasPorUsuarioAsignado(Id);
+        if (tareas!=null)
+        {
+            return Ok(tareas);
+        }
+        else{
+            return NotFound("No existe tarea alguna con el Id de usuario asignado");
+        }
+    }
+
+// ● GET /api/Tarea/Tablero/{Id}: Listar tareas asignada de un tablero
+    [HttpGet ("/api/Tarea/Tablero/{Id}", Name = "GetTareasPorIdTableroAsociado")]
+    public ActionResult<List<Tarea>>GetTareasPorIdTableroAsociado(int Id)
+    {
+       List<Tarea> tareas = RepoTarea.GetTareasPorTablero(Id);
+        if (tareas!=null)
+        {
+            return Ok(tareas);
+        }
+        else{
+            return NotFound("No existe tarea alguna con el Id de usuario asignado");
+        }
+    }
+
 }
 
 // Crear un Controlador de Tareas (TareasController) que incluya los endpoints para:
