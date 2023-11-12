@@ -16,7 +16,7 @@ namespace Entidades.Models
         public string Nombre { get => Nombre; set => Nombre = value; }
         public string Descripcion { get => Descripcion; set => Descripcion = value; }
         public string Color { get => Color; set => Color = value; }
-        public int? IdUsuarioAsignado { get => IdUsuarioAsignado; set => IdUsuarioAsignado = value; }
         internal EstadoTarea Estado { get => Estado; set => Estado = value; }
+        public int? IdUsuarioAsignado { get => IdUsuarioAsignado; set => IdUsuarioAsignado = value; }
     }
 }

@@ -11,13 +11,13 @@ namespace Entidades.Repositorios
         private string cadenaConexion = "Data Source=db/Kanban.db;Cache=Shared"; // crea la conexion 
         
         public void Create(Usuario usuario){
-            var queryString = $"INSERT INTO usuario (id_usuario, nombre_de_usuario) VALUES (@id_usuario,@nombre_de_usuario)"; //mi consulta
+            var queryString = $"INSERT INTO usuario (nombre_de_usuario) VALUES (@nombre_de_usuario)"; //mi consulta
             using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))//crea un dato tipo SQLiteConnetion para usarlo e el comando
             {
                 connection.Open();//abre la conexion
                 var command = new SQLiteCommand(queryString, connection);//paso mi consulta y la conexion para ejectuar el comando
  
-                command.Parameters.Add(new SQLiteParameter("@id_usuario", usuario.Id));//agrego el valor del parametro
+                //command.Parameters.Add(new SQLiteParameter("@id_usuario", usuario.Id));//agrego el valor del parametro
                 command.Parameters.Add(new SQLiteParameter("@nombre_de_usuario", usuario.NombreDeUsuario));
                 command.ExecuteNonQuery();
                 connection.Close();   
@@ -62,7 +62,7 @@ namespace Entidades.Repositorios
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);//crear variable de conexion
             var Usuario = new Usuario();
             SQLiteCommand command = connection.CreateCommand();//comando para usar la base
-            command.CommandText = $"SELECT * FROM Usuario WHERE idUsu = '{idUsu}';";
+            command.CommandText = $"SELECT * FROM Usuario WHERE id_usuario = '{idUsu}';";
             //command.CommandText = "SELECT * FROM Usuarios WHERE idUsu = @idUsuario"; otra opcion
             command.Parameters.Add(new SQLiteParameter("@id_usuario", idUsu));//comando necesario para buscar los usuarios que cumplan con la condicion
             connection.Open();

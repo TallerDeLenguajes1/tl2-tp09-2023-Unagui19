@@ -4,12 +4,12 @@ namespace Entidades.Models
     {
         int id ;
         int idUsuarioPropietario;
-        string Nombre;
+        string nombre;
         string descripcion;
 
         public int Id { get => id; set => id = value; }
-        public int Id_usuario_propietario { get => idUsuarioPropietario; set => idUsuarioPropietario = value; }
-        public string Nombre_de_Tablero { get => Nombre; set => Nombre = value; }
+        public int IdUsuarioPropietario { get => idUsuarioPropietario; set => idUsuarioPropietario = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
     }
 }
